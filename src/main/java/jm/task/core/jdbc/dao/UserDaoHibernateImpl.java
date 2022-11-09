@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
 
-    SessionFactory sessionFactory = Util.getUtil().getFactory();
+    private SessionFactory sessionFactory = Util.getUtil().getFactory();
 
     public UserDaoHibernateImpl() {
     }
@@ -30,7 +30,9 @@ public class UserDaoHibernateImpl implements UserDao {
             query.executeUpdate();
             tx.commit();
         } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
+            if (tx != null){
+                tx.rollback();
+            }
             e.printStackTrace();
         }
     }
@@ -45,7 +47,9 @@ public class UserDaoHibernateImpl implements UserDao {
             query.executeUpdate();
             tx.commit();
         } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
+            if (tx != null){
+                tx.rollback();
+            }
             e.printStackTrace();
         }
     }
@@ -60,7 +64,9 @@ public class UserDaoHibernateImpl implements UserDao {
             System.out.printf("User с именем - %s добавлен в базу данных\n", name);
             tx.commit();
         } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
+            if (tx != null){
+                tx.rollback();
+            }
             e.printStackTrace();
         }
     }
@@ -74,7 +80,9 @@ public class UserDaoHibernateImpl implements UserDao {
             session.delete(user);
             tx.commit();
         } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
+            if (tx != null){
+                tx.rollback();
+            }
             e.printStackTrace();
         }
     }
@@ -88,7 +96,9 @@ public class UserDaoHibernateImpl implements UserDao {
             result = session.createQuery("FROM User", User.class).getResultList();
             tx.commit();
         } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
+            if (tx != null){
+                tx.rollback();
+            }
             e.printStackTrace();
         }
         return result;
@@ -104,7 +114,9 @@ public class UserDaoHibernateImpl implements UserDao {
             query.executeUpdate();
             tx.commit();
         } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
+            if (tx != null){
+                tx.rollback();
+            }
             e.printStackTrace();
         }
     }
